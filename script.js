@@ -142,6 +142,7 @@ function addWindowTapHandling(element) {
 
 initializeWindow("welcome");
 initializeWindow("projects");
+initializeWindow("terminal")
 
 var projectsIcon = document.querySelector("#projectsIcon");
 
@@ -152,6 +153,17 @@ projectsIcon.addEventListener("click", function() {
 projectsIcon.addEventListener("dblclick", function() {
     openWindow(projectsScreen);
 });
+
+var terminalScreen = document.querySelector("#terminal");
+var terminalIcon = document.querySelector("#terminalIcon");
+
+terminalIcon.addEventListener("click", function() {
+    handleIconTap(terminalIcon);
+});
+
+terminalIcon.addEventListener("dblclick", function() {
+    openWindow(terminalScreen);
+})
 
 var projects = [
     {
@@ -218,3 +230,204 @@ for (let i = 0; i < projects.length; i++) {
 }
 
 document.querySelector("#projectsSidebar div").classList.add("selected-project");
+
+var terminalInput = document.querySelector("#terminalInput");
+var terminalContent = document.querySelector("#terminalContent");
+
+var commandHistory = [];
+var historyIndex = -1;
+
+function handleTerminalInput(event) {
+
+    if (event.key === "ArrowUp") {
+        event.preventDefault();
+
+        if (commandHistory.length === 0) {
+            return;
+        }
+
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+        }
+
+        terminalInput.value =
+            commandHistory[commandHistory.length - 1 - historyIndex];
+
+        return;
+    }
+
+    if (event.key === "ArrowDown") {
+        event.preventDefault();
+
+        if (historyIndex > 0) {
+            historyIndex--;
+
+            terminalInput.value =
+                commandHistory[commandHistory.length - 1 - historyIndex];
+
+        } else {
+            historyIndex = -1;
+            terminalInput.value = "";
+        }
+
+        return;
+    }
+
+    if (event.key !== "Enter") {
+        return;
+    }
+
+    var command = terminalInput.value.trim().toLowerCase();
+
+    if (command === "") {
+        return;
+    }
+
+    commandHistory.push(command);
+    historyIndex = -1;
+
+    var commandLine = document.createElement("p");
+    commandLine.innerHTML = `velora&gt; ${command}`;
+
+    terminalContent.insertBefore(
+        commandLine,
+        terminalInput.parentElement
+    );
+
+    var output = document.createElement("p");
+
+    if (command === "help") {
+
+        output.innerHTML = `
+            Available commands:<br><br>
+            help — Show available commands<br>
+            clear — Clear the terminal<br>
+            about — About Catalin<br>
+            projects — Open Projects<br>
+            open projects — Open Projects<br>
+            date — Show current date and time<br>
+            whoami — Show current user<br>
+            version — Show Velora version<br>
+            apps — Show installed apps<br>
+            ls — List files and apps<br>
+            neofetch — Show system information<br>
+            echo [text] — Print text
+        `;
+
+    } else if (command === "about") {
+
+        output.innerHTML = `
+            Velora is a personal web-based operating system.<br>
+            Built by Catalin.
+        `;
+
+   } else if (
+    command === "projects" ||
+    command === "open projects"
+) {
+
+    openWindow(projectsScreen);
+    output.textContent = "Opening Projects...";
+
+} else if (
+    command === "terminal" ||
+    command === "open terminal"
+) {
+
+    openWindow(document.querySelector("#terminal"));
+    output.textContent = "Terminal is already open.";
+
+} else if (command === "exit") {
+
+    closeWindow(document.querySelector("#terminal"));
+    return;
+} else if (command === "date") {
+
+        output.textContent = new Date().toLocaleString();
+
+    } else if (command === "whoami") {
+
+        output.textContent =
+            "Catalin — Developer, gamer & footballer from Moldova.";
+
+    } else if (command === "version") {
+
+        output.textContent = "Velora v1.0";
+
+    } else if (command === "apps") {
+
+        output.innerHTML = `
+            Installed applications:<br><br>
+            • Projects<br>
+            • Terminal
+        `;
+
+    } else if (command === "ls") {
+
+        output.innerHTML = `
+            Desktop<br>
+            Projects<br>
+            Terminal<br>
+            Settings<br>
+            Games
+        `;
+
+    } else if (command === "neofetch") {
+
+        output.innerHTML = `
+            <strong>VELORA</strong><br><br>
+            OS: Velora WebOS<br>
+            Version: 1.0<br>
+            User: Catalin<br>
+            Shell: Velora Terminal<br>
+            Apps: 2<br>
+            Status: Online
+        `;
+
+    } else if (command.startsWith("echo ")) {
+
+        output.textContent = command.substring(5);
+
+    } else if (command === "clear") {
+
+        terminalContent.innerHTML = `
+            <div class="terminal-input-line">
+                <span>velora&gt;</span>
+                <input
+                    type="text"
+                    id="terminalInput"
+                    autocomplete="off"
+                >
+            </div>
+        `;
+
+        terminalInput = document.querySelector("#terminalInput");
+
+        terminalInput.addEventListener(
+            "keydown",
+            handleTerminalInput
+        );
+
+        terminalInput.focus();
+
+        return;
+
+    } else {
+
+        output.textContent =
+            `Command not found: ${command}`;
+    }
+
+    terminalContent.insertBefore(
+        output,
+        terminalInput.parentElement
+    );
+
+    terminalInput.value = "";
+    terminalInput.focus();
+}
+
+terminalInput.addEventListener(
+    "keydown",
+    handleTerminalInput
+);
