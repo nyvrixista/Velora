@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Velora</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="topbar" id="top">
+            <p class="topbar-left" id="welcomeopen">Velora</p>
+            <p id="timeElement" class="topbar-right">Loading time...</p>
+        </div>
+
+        <div id="desktopApps">
+          <div class="app-icon" id="projectsIcon">
+            <img
+                src="./assets/velora-logo.jpg"
+                alt="Projects"
+            >
+            <p>Projects</p>
+          </div>
+        </div>
+
+        <div class="window" id="projects" style="top: calc(50% - 240px); left: calc(50% - 260px); display: none;">
+          <div class="windowheader" id="projectsheader">
+            <div class="closebutton" id="projectsclose"></div>
+
+            <p class="headertext">Projects</p>
+
+            <div style="width: 16px; margin-right: 6px; height: 16px;"></div>
+          </div>
+
+          <div class="projects-content">
+            <div class="projects-sidebar" id="projectsSidebar"></div>
+            <div class="projects-main" id="projectsContent"></div>
+          </div>
+        </div>
+
+        <div class="window" id="welcome">
+
+          <div class="windowheader" id="welcomeheader">
+              <p class="headertext">Velora</p>
+              <div class="closebutton" id="welcomeclose" onmousedown="event.stopPropagation()"></div>
+          </div>
+
+          <img 
+            class="logo"
+            src="./assets/velora-logo.jpg" 
+            alt="Velora Logo"
+          >
+
+          <h1 class="main-title">
+            Welcome to Velora
+          </h1>
+
+          <h2 class="subtitle">
+            Explore Velora
+          </h2>
+
+          <p>
+            Your personal web workspace.
+          </p>
+
+          <p>
+            Built by Catalin.
+          </p>
+
+          <p>
+            Developer, gamer, and footballer from Moldova.
+          </p>
+
+          <a href="https://catalinbuilds.dev">Who am I?</a>
+
+          <a href="https://nyvrixista.github.io/Quotify">My first project</a>
+        
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

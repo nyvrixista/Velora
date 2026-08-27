@@ -1,0 +1,224 @@
+body {
+    background-color: #0F1117;
+    color: #F5F7FA;
+    font-family: Inter, Arial, sans-serif;
+    background-image: url('./assets/wallpaper.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #FFF;
+}
+
+.window {
+    border: 2px solid;
+    width: 500px;
+    border-radius: 16px;
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(15, 17, 23, 0.9);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.topbar-left {
+    margin-left: 16px;
+}
+
+.topbar-right {
+    margin-right: 16px;
+}
+
+.windowheader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    cursor: grab;
+}
+
+.headertext {
+    margin: 0;
+    font-weight: 500;
+}
+
+.closebutton {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-color: #FF5F57;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+#welcomeopen {
+    cursor: pointer;
+}
+
+#desktopApps {
+    padding-top: 64px;
+    padding-left: 16px;
+}
+
+.app-icon {
+    width: fit-content;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.app-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 16px;
+    display: block;
+}
+
+.app-icon p {
+    margin: 4px 0 0;
+    color: #FFF;
+}
+
+.app-icon.selected {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+}
+
+.projects-content {
+    background-color: rgba(15, 17, 23, 0.95);
+    margin: 6px;
+    border-radius: 12px;
+    width: auto;
+    height: 400px;
+    padding: 16px;
+    color: #FFF;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+}
+
+#projects {
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.projects-sidebar {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.projects-main {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.projects-sidebar > div {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.projects-sidebar > div:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.projects-sidebar > div p {
+    margin: 0;
+}
+
+.projects-sidebar > div p:last-child {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.selected-project {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.project-card {
+    padding: 20px;
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-card h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.project-card p {
+    margin: 4px 0;
+}
+
+.project-date {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 16px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.12);
+    padding: 8px 14px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 16px;
+    margin-bottom: 16px;
+}
