@@ -1,37 +1,34 @@
 # Velora
 
-Velora is a web-based personal operating system built by Catalin.
+Velora is a web-based operating system I am building with HTML, CSS, and JavaScript.
 
-Instead of being a traditional portfolio website, Velora presents personal projects, tools, and other content through a desktop-style interface with applications and draggable windows.
+The idea is to make a personal workspace that feels more like a desktop than a normal website. It has windows, apps, a terminal, and other features that I can keep adding over time.
 
 ## Features
 
-* Desktop-style interface
 * Draggable windows
-* Application icons
-* Projects application
-* Interactive terminal
-* Settings application
-* Live date and time
+* Desktop app icons
 * Window focus management
-* Custom wallpaper and interface
+* Projects app
+* Interactive terminal
+* Settings app
+* Live clock
+* Custom wallpaper
 
-## Applications
+## Apps
 
 ### Projects
 
-The Projects application displays projects built by Catalin.
+The Projects app contains the projects I have built.
 
-Current projects include:
+Currently:
 
-* Quotify, a quote discovery and collecting web app
-* Velora, the operating system itself
+* Quotify
+* Velora
 
 ### Terminal
 
-Velora has an interactive terminal with a small command system.
-
-Available commands include:
+Velora has its own terminal with commands such as:
 
 ```text
 help
@@ -40,7 +37,6 @@ history
 about
 projects
 open projects
-open terminal
 date
 whoami
 version
@@ -51,61 +47,45 @@ echo
 exit
 ```
 
-The terminal also supports command history using the Up and Down arrow keys.
+The terminal also supports command history with the Up and Down arrow keys.
 
 ### Settings
 
-The Settings application is being developed to provide customization options for Velora.
+The Settings app is being worked on and will eventually be used to customize Velora.
 
 ## Built With
-
-Velora is built using standard web technologies:
 
 * HTML
 * CSS
 * JavaScript
 
-No frameworks are currently required.
+No frameworks are used.
 
 ## Project Structure
 
 ```text
 Velora/
-|
-|-- index.html
-|-- style.css
-|-- script.js
-|
-|-- assets/
-|   |-- wallpaper.jpg
-|   |-- velora-logo.jpg
-|   |-- terminal-icon.png
-|   |-- settings-icon.png
-|   `-- ...
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+    ├── wallpaper.jpg
+    ├── velora-logo.jpg
+    ├── terminal-icon.png
+    ├── settings-icon.png
+    └── ...
 ```
 
-## Vision
+## What's Next
 
-Velora is intended to be more than a personal portfolio.
+I want to keep adding apps and features to Velora.
 
-The goal is to create an interactive web operating system where different parts of my work, interests, and projects can exist as applications.
-
-Future applications may include productivity tools, games, developer tools, football-related features, entertainment apps, system utilities, and various experimental projects.
+Some of the things I want to build include games, developer tools, productivity apps, and other small experiments.
 
 ## Author
 
-Catalin
-
-Developer, gamer, and footballer from Moldova.
+Me, Catalin
 
 Website: https://catalinbuilds.dev
 
 GitHub: https://github.com/nyvrixista
-
-## Status
-
-Velora is actively being developed.
-
-The current focus is building the core operating system and adding applications that make Velora feel like a real personal desktop environment.
-
-> Velora: Your personal web workspace.
