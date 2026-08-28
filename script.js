@@ -72,6 +72,41 @@ function openWindow(element) {
     if (selectedIcon) {
         deselectIcon(selectedIcon);
     }
+
+    var rect = element.getBoundingClientRect();
+
+    var maxTop = window.innerHeight - rect.height;
+    var maxLeft = window.innerWidth - rect.width;
+
+    var top = element.offsetTop;
+    var left = element.offsetLeft;
+
+    if (top < 50) {
+        top = 50;
+    }
+
+    if (top > maxTop) {
+        top = maxTop;
+    }
+
+    if (left < 0) {
+        left = 0;
+    }
+
+    if (left > maxLeft) {
+        left = maxLeft;
+    }
+
+    element.style.top = top + "px";
+    element.style.left = left + "px";
+}
+
+function centerWindow(element) {
+    element.style.top =
+        (window.innerHeight - element.offsetHeight) / 2 + "px";
+
+    element.style.left =
+        (window.innerWidth - element.offsetWidth) / 2 + "px";
 }
 
 var welcomeScreenClose = document.querySelector("#welcomeclose");
@@ -83,6 +118,7 @@ welcomeScreenClose.addEventListener("click", function() {
 
 welcomeScreenOpen.addEventListener("click", function() {
     openWindow(welcomeScreen);
+    centerWindow(welcomeScreen);
 });
 
 var selectedIcon = undefined;
