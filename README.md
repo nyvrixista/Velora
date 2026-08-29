@@ -1,21 +1,17 @@
 # Velora
 
-Velora is a web-based operating system I am building with HTML, CSS, and JavaScript.
+Velora is a WebOS I am building using HTML, CSS, and JavaScript.
 
-The idea is to make a personal workspace that feels more like a desktop than a normal website. It has windows, apps, a terminal, and other features that I can keep adding over time.
+The main features are:
 
-## Features
-
-* Draggable windows
+* You can drag windows
 * Desktop app icons
-* Window focus management
 * Projects app
-* Interactive terminal
-* Settings app
+* Terminal
 * Live clock
 * Custom wallpaper
 
-## Apps
+My Apps:
 
 ### Projects
 
@@ -29,8 +25,7 @@ Currently:
 ### Terminal
 
 Velora has its own terminal with commands such as:
-
-```text
+```
 help
 clear
 history
@@ -47,45 +42,14 @@ echo
 exit
 ```
 
-The terminal also supports command history with the Up and Down arrow keys.
+The terminal can remember what you typed. Just use the arrow up and down.
 
-### Settings
-
-The Settings app is being worked on and will eventually be used to customize Velora.
-
-## Built With
-
-* HTML
-* CSS
-* JavaScript
-
-No frameworks are used.
-
-## Project Structure
-
-```text
-Velora/
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── wallpaper.jpg
-    ├── velora-logo.jpg
-    ├── terminal-icon.png
-    ├── settings-icon.png
-    └── ...
-```
-
-## What's Next
+Now What's Next?
 
 I want to keep adding apps and features to Velora.
 
-Some of the things I want to build include games, developer tools, productivity apps, and other small experiments.
+I want to build games, developer tools, productivity apps, and other useful apps.
 
-## Author
-
-Me, Catalin
+If you read the whole README (which i appreciate), learn more about me in my website.
 
 Website: https://catalinbuilds.dev
-
-GitHub: https://github.com/nyvrixista
