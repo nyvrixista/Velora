@@ -2,53 +2,15 @@
 
 Velora is a WebOS I am building using HTML, CSS, and JavaScript.
 
-The main features are:
+It operates like an Windows, or Mac, but on an browser.
 
-* You can drag windows
-* Desktop app icons
-* Projects app
-* Terminal
-* Live clock
-* Custom wallpaper
+I have built 2 apps, The projects app, where you all can see my projects, and the Terminal.
 
-My Apps:
+You can see some info by pressing the Velora text in the topbar.
 
-### Projects
+If you would like to use the terminal, but dont know the commands, just type help, and it will show it to you.
 
-The Projects app contains the projects I have built.
-
-Currently:
-
-* Quotify
-* Velora
-
-### Terminal
-
-Velora has its own terminal with commands such as:
-```
-help
-clear
-history
-about
-projects
-open projects
-date
-whoami
-version
-apps
-ls
-neofetch
-echo
-exit
-```
-
-The terminal can remember what you typed. Just use the arrow up and down.
-
-Now What's Next?
-
-I want to keep adding apps and features to Velora.
-
-I want to build games, developer tools, productivity apps, and other useful apps.
+In the future, I want to build games, developer tools, productivity apps, and other useful apps for my WebOS.
 
 If you read the whole README (which i appreciate), learn more about me in my website.
 
