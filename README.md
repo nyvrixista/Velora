@@ -12,4 +12,4 @@ It includes just four apps: **Projects, Terminal, Settings, and Notes.** I wante
 - Taskbar for switching between open apps
 
 ## Want to test it?
-You are more than welcome, here: https://catalinbuilds.dev
+You are more than welcome, here: <a href="https://nyvrixista.github.io/Velora">Click me!</a>
