@@ -253,3 +253,380 @@ body {
 #terminal {
     max-height: 80vh;
 }
+
+#settings {
+    width: 440px;
+    max-width: calc(100vw - 48px);
+    box-sizing: border-box;
+}
+
+.settings-content {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 18px;
+    color: inherit;
+}
+
+.settings-content h2 {
+    margin: 0 0 6px;
+    font-size: 26px;
+}
+
+.settings-description {
+    margin-top: 0;
+    opacity: 0.7;
+}
+
+.settings-section {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.settings-section h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.setting-row strong {
+    font-size: 14px;
+}
+
+.setting-row p,
+.settings-section > p {
+    font-size: 12px;
+    opacity: 0.7;
+    margin: 5px 0 0;
+}
+
+.setting-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.setting-switch input {
+    accent-color: #6c8cff;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.settings-status {
+    font-size: 12px;
+    opacity: 0.65;
+    margin: 18px 0 0;
+}
+
+body.light-mode {
+    background-color: #e9edf5;
+    color: #202431;
+}
+
+body.light-mode .topbar {
+    background-color: rgba(255, 255, 255, 0.65);
+    color: #202431;
+}
+
+body.light-mode .window {
+    background-color: rgba(245, 247, 252, 0.96);
+    border-color: rgba(40, 48, 65, 0.35);
+}
+
+body.light-mode .projects-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #202431;
+}
+
+body.light-mode .project-card {
+    background-color: rgba(40, 48, 65, 0.06);
+}
+
+body.light-mode .project-card a {
+    color: #202431;
+    background-color: rgba(40, 48, 65, 0.1);
+}
+
+body.light-mode .terminal-content {
+    background-color: #202431;
+    color: #f5f7fa;
+}
+
+body.light-mode .app-icon p {
+    color: #202431;
+}
+
+body.light-mode .settings-content {
+    background-color: rgba(40, 48, 65, 0.05);
+}
+
+body.solid-windows .window {
+    background-color: #151821;
+}
+
+body.light-mode.solid-windows .window {
+    background-color: #f5f7fc;
+}
+
+#notesWindow {
+    width: 500px;
+    max-width: calc(100vw - 64px);
+    box-sizing: border-box;
+}
+
+.notes-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 340px;
+}
+
+.notes-toolbar,
+.notes-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.notes-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    opacity: 0.65;
+}
+
+#notesSaveStatus {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+#notesEditor {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    flex: 1;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+    outline: none;
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+#notesEditor:focus {
+    border-color: rgba(130, 155, 255, 0.7);
+}
+
+#notesEditor::placeholder {
+    color: inherit;
+    opacity: 0.4;
+}
+
+.notes-footer {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+#clearNotesButton {
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font: inherit;
+}
+
+#clearNotesButton:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+body.light-mode #notesEditor {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(40, 48, 65, 0.15);
+}
+
+body.light-mode #clearNotesButton {
+    background: rgba(40, 48, 65, 0.08);
+    border-color: rgba(40, 48, 65, 0.15);
+}
+
+#taskbar {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    min-height: 54px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+
+    background: rgba(20, 22, 30, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    color: #f5f7fa;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.taskbar-brand {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    background: #6c8cff;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+#taskbarApps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+}
+
+.taskbar-app {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    min-height: 36px;
+    padding: 0 12px;
+
+    background: rgba(255, 255, 255, 0.07);
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.taskbar-app:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.taskbar-app.active {
+    background: rgba(108, 140, 255, 0.22);
+    border-color: rgba(108, 140, 255, 0.55);
+}
+
+.taskbar-app.active::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 3px;
+    border-radius: 5px;
+    background: #8ba5ff;
+}
+
+.taskbar-app-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+#taskbarClock {
+    flex-shrink: 0;
+    padding-left: 4px;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+body.light-mode #taskbar {
+    background: rgba(245, 247, 252, 0.93);
+    color: #202431;
+    border-color: rgba(40, 48, 65, 0.15);
+}
+
+body.light-mode .taskbar-app {
+    background: rgba(40, 48, 65, 0.05);
+}
+
+body.light-mode .taskbar-app:hover {
+    background: rgba(40, 48, 65, 0.12);
+}
+
+body.light-mode .taskbar-app.active {
+    background: rgba(108, 140, 255, 0.17);
+}
+
+@media (max-width: 600px) {
+    #settings {
+        width: calc(100vw - 32px);
+        max-width: none;
+        left: 16px !important;
+    }
+
+    .settings-content {
+        padding: 12px;
+    }
+
+    #notesWindow {
+        width: calc(100vw - 32px);
+        max-width: none;
+        left: 16px !important;
+    }
+
+    .notes-content {
+        min-height: 280px;
+    }
+
+    #notesEditor {
+        min-height: 240px;
+    }
+
+    #taskbar {
+        bottom: 8px;
+        gap: 6px;
+        padding: 6px;
+        min-height: 46px;
+    }
+
+    .taskbar-app {
+        min-height: 32px;
+        padding: 0 9px;
+    }
+
+    .taskbar-app-label {
+        display: none;
+    }
+
+    #taskbarClock {
+        font-size: 10px;
+    }
+}

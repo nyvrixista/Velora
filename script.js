@@ -178,7 +178,9 @@ function addWindowTapHandling(element) {
 
 initializeWindow("welcome");
 initializeWindow("projects");
-initializeWindow("terminal")
+initializeWindow("terminal");
+initializeWindow("settings");
+initializeWindow("notesWindow");
 
 var projectsIcon = document.querySelector("#projectsIcon");
 
@@ -199,7 +201,30 @@ terminalIcon.addEventListener("click", function() {
 
 terminalIcon.addEventListener("dblclick", function() {
     openWindow(terminalScreen);
-})
+});
+
+var settingsIcon = document.querySelector("#settingsIcon");
+var settingsScreen = document.querySelector("#settings");
+
+settingsIcon.addEventListener("click", function() {
+    handleIconTap(settingsIcon);
+});
+
+
+settingsIcon.addEventListener("dblclick", function() {
+    openWindow(settingsScreen);
+});
+
+var notesIcon = document.querySelector("#notesIcon");
+var notesWindow = document.querySelector("#notesWindow");
+
+notesIcon.addEventListener("click", function() {
+    handleIconTap(notesIcon);
+});
+
+notesIcon.addEventListener("dblclick", function() {
+    openWindow(notesWindow);
+});
 
 var projects = [
     {
@@ -347,7 +372,8 @@ function handleTerminalInput(event) {
             apps — Show installed apps<br>
             ls — List files and apps<br>
             neofetch — Show system information<br>
-            echo [text] — Print text
+            echo [text] — Print text<br>
+            notes - Open Notes
         `;
 
     } else if (command === "about") {
@@ -364,6 +390,12 @@ function handleTerminalInput(event) {
 
     openWindow(projectsScreen);
     output.textContent = "Opening Projects...";
+
+} else if (
+    command === "notes"
+ ) {
+    openWindow(notesWindow);
+    output.textContent = "Opening Notes...";
 
 } else if (
     command === "terminal" ||
@@ -396,6 +428,8 @@ function handleTerminalInput(event) {
             Installed applications:<br><br>
             • Projects<br>
             • Terminal
+            • Settings
+            • Notes
         `;
 
     } else if (command === "ls") {
@@ -405,7 +439,7 @@ function handleTerminalInput(event) {
             Projects<br>
             Terminal<br>
             Settings<br>
-            Games
+            Notes
         `;
 
     } else if (command === "neofetch") {
@@ -416,7 +450,7 @@ function handleTerminalInput(event) {
             Version: 1.0<br>
             User: Catalin<br>
             Shell: Velora Terminal<br>
-            Apps: 2<br>
+            Apps: 4<br>
             Status: Online
         `;
 
@@ -467,3 +501,233 @@ terminalInput.addEventListener(
     "keydown",
     handleTerminalInput
 );
+
+
+var lightModeToggle = document.querySelector("#lightModeToggle");
+var transparencyToggle = document.querySelector("#transparencyToggle");
+var settingsStatus = document.querySelector("#settingsStatus");
+
+lightModeToggle.checked =
+    localStorage.getItem("velora-light-mode") === "true";
+
+transparencyToggle.checked =
+    localStorage.getItem("velora-transparency") !== "false";
+
+function applyAppearanceSettings() {
+    document.body.classList.toggle(
+        "light-mode",
+        lightModeToggle.checked
+    );
+
+    document.body.classList.toggle(
+        "solid-windows",
+        !transparencyToggle.checked
+    );
+}
+
+function saveAppearanceSettings() {
+    localStorage.setItem(
+        "velora-light-mode",
+        lightModeToggle.checked
+    );
+
+    localStorage.setItem(
+        "velora-transparency",
+        transparencyToggle.checked
+    );
+
+    applyAppearanceSettings();
+
+    settingsStatus.textContent = "Settings saved successfully.";
+}
+
+lightModeToggle.addEventListener("change", saveAppearanceSettings);
+transparencyToggle.addEventListener("change", saveAppearanceSettings);
+
+applyAppearanceSettings();
+
+var notesEditor = document.querySelector("#notesEditor");
+var notesSaveStatus = document.querySelector("#notesSaveStatus");
+var notesCharacterCount = document.querySelector("#notesCharacterCount");
+var clearNotesButton = document.querySelector("#clearNotesButton");
+
+var NOTES_STORAGE_KEY = "velora-notes";
+
+function updateNotesCharacterCount() {
+    var count = notesEditor.value.length;
+
+    notesCharacterCount.textContent =
+        count + (count === 1 ? " character" : " characters");
+}
+
+function loadNotes() {
+    try {
+        notesEditor.value =
+            localStorage.getItem(NOTES_STORAGE_KEY) || "";
+
+        notesSaveStatus.textContent = "Saved locally";
+    } catch (error) {
+        notesSaveStatus.textContent = "Local storage unavailable";
+    }
+
+    updateNotesCharacterCount();
+}
+
+function saveNotes() {
+    try {
+        localStorage.setItem(
+            NOTES_STORAGE_KEY,
+            notesEditor.value
+        );
+
+        notesSaveStatus.textContent = "Saved locally";
+    } catch (error) {
+        notesSaveStatus.textContent = "Could not save notes";
+    }
+
+    updateNotesCharacterCount();
+}
+
+notesEditor.addEventListener("input", saveNotes);
+
+clearNotesButton.addEventListener("click", function() {
+    if (notesEditor.value.length === 0) {
+        return;
+    }
+
+    var confirmed = confirm("Clear all your saved notes?");
+
+    if (!confirmed) {
+        return;
+    }
+
+    notesEditor.value = "";
+    saveNotes();
+    notesEditor.focus();
+});
+
+loadNotes();
+
+var taskbarApps = document.querySelector("#taskbarApps");
+var taskbarClock = document.querySelector("#taskbarClock");
+
+var taskbarAppList = [
+    { id: "projects", name: "Projects", icon: "projectsIcon" },
+    { id: "terminal", name: "Terminal", icon: "terminalIcon" },
+    { id: "settings", name: "Settings", icon: "settingsIcon" },
+    { id: "notesWindow", name: "Notes", icon: "notesIcon" }
+];
+
+var taskbarButtons = {};
+
+taskbarAppList.forEach(function(app) {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "taskbar-app";
+    button.title = app.name;
+    button.setAttribute("aria-label", app.name);
+
+    var iconElement = document.querySelector(
+        "#" + app.icon + " img"
+    );
+
+    if (iconElement) {
+        var image = document.createElement("img");
+        image.className = "taskbar-app-icon";
+        image.src = iconElement.src;
+        image.alt = "";
+        button.appendChild(image);
+    }
+
+    var label = document.createElement("span");
+    label.className = "taskbar-app-label";
+    label.textContent = app.name;
+    button.appendChild(label);
+
+    button.addEventListener("click", function() {
+        var targetWindow = document.getElementById(app.id);
+
+        if (targetWindow) {
+            openWindow(targetWindow);
+            updateTaskbar();
+        }
+    });
+
+    taskbarApps.appendChild(button);
+    taskbarButtons[app.id] = button;
+});
+
+function updateTaskbar() {
+    var visibleWindows = taskbarAppList
+        .map(function(app) {
+            return {
+                app: app,
+                element: document.getElementById(app.id)
+            };
+        })
+        .filter(function(item) {
+            return item.element &&
+                getComputedStyle(item.element).display !== "none";
+        });
+
+    var activeWindow = null;
+    var highestZIndex = -Infinity;
+
+    visibleWindows.forEach(function(item) {
+        var zIndex = parseInt(
+            getComputedStyle(item.element).zIndex,
+            10
+        );
+
+        if (!Number.isFinite(zIndex)) {
+            zIndex = 0;
+        }
+
+        if (zIndex >= highestZIndex) {
+            highestZIndex = zIndex;
+            activeWindow = item.element;
+        }
+    });
+
+    taskbarAppList.forEach(function(app) {
+        var button = taskbarButtons[app.id];
+        var targetWindow = document.getElementById(app.id);
+
+        var isOpen = targetWindow &&
+            getComputedStyle(targetWindow).display !== "none";
+
+        button.hidden = !isOpen;
+        button.classList.toggle(
+            "active",
+            Boolean(isOpen && targetWindow === activeWindow)
+        );
+    });
+}
+
+function updateTaskbarClock() {
+    taskbarClock.textContent = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
+var taskbarObserver = new MutationObserver(function() {
+    updateTaskbar();
+});
+
+document.querySelectorAll(".window").forEach(function(win) {
+    taskbarObserver.observe(win, {
+        attributes: true,
+        attributeFilter: ["style"]
+    });
+
+    win.addEventListener("mousedown", function() {
+        requestAnimationFrame(updateTaskbar);
+    });
+});
+
+updateTaskbar();
+updateTaskbarClock();
+setInterval(updateTaskbarClock, 1000);
+
+

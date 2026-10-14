@@ -30,6 +30,30 @@
                 <p>Terminal</p>
             </div>
 
+            <div class="app-icon" id="settingsIcon">
+                <img
+                    src="./assets/settings-logo.png"
+                    alt="Settings"
+                >
+                <p>Settings</p>
+            </div>
+
+            
+            <div id="taskbar">
+                <div class="taskbar-brand">V</div>
+                <div id="taskbarApps"></div>
+                <div id="taskbarClock"></div>
+            </div>
+
+            
+            <div class="app-icon" id="notesIcon">
+                <img
+                    src="./assets/notes-logo.png"
+                    alt="Notes"
+                >
+                <p>Notes</p>
+            </div>
+
         </div>
 
         <div class="window" id="projects" style="top: calc(50% - 240px); left: calc(50% - 260px); display: none;">
@@ -50,13 +74,13 @@
 
         </div>
 
-        <div class="window" id="terminal" style="top: calc(50% - 240px); left: calc(50% - 260px); display: none;">
+        
+        <div class="window" id="terminal"
+             style="top: calc(50% - 240px); left: calc(50% - 260px); display: none;">
 
             <div class="windowheader" id="terminalheader">
                 <div class="closebutton" id="terminalclose"></div>
-
                 <p class="headertext">Terminal</p>
-
                 <div style="width: 16px; margin-right: 6px; height: 16px;"></div>
             </div>
 
@@ -65,12 +89,102 @@
                 <p>Type <strong>help</strong> to see available commands.</p>
 
                 <div class="terminal-input-line">
-                  <span>velora&gt;</span>
-                  <input type="text" id="terminalInput" autocomplete="off">
+                    <span>velora&gt;</span>
+                    <input type="text" id="terminalInput" autocomplete="off">
                 </div>
             </div>
-
         </div>
+
+        <div class="window" id="settings"
+             style="display: none; top: 100px; left: 100px;">
+
+            <div class="windowheader" id="settingsheader">
+                <div class="closebutton" id="settingsclose"></div>
+                <p class="headertext">Settings</p>
+                <div style="width: 16px; margin-right: 6px; height: 16px;"></div>
+            </div>
+
+            <div class="settings-content" id="settingsContent">
+                <h2>Settings</h2>
+                <p class="settings-description">
+                    Make Velora feel like yours.
+                </p>
+
+                <div class="settings-section">
+                    <h3>Appearance</h3>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Light mode</strong>
+                            <p>Use a brighter interface.</p>
+                        </div>
+                        <label class="setting-switch">
+                            <input type="checkbox" id="lightModeToggle">
+                            <span>Enable</span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Window transparency</strong>
+                            <p>Control the glass effect on windows.</p>
+                        </div>
+                        <label class="setting-switch">
+                            <input type="checkbox" id="transparencyToggle" checked>
+                            <span>Enable</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>About Velora</h3>
+                    <p>Velora WebOS</p>
+                    <p>Version 1.0</p>
+                    <p>Built by Catalin.</p>
+                </div>
+
+                <p id="settingsStatus" class="settings-status">
+                    Your workspace, your rules.
+                </p>
+            </div>
+        </div>
+
+        
+<div class="window" id="notesWindow"
+     style="display: none; top: 140px; left: 180px;">
+
+    <div class="windowheader" id="notesWindowheader">
+        <div class="closebutton" id="notesWindowclose"></div>
+
+        <p class="headertext">Notes</p>
+
+        <div style="width: 16px; margin-right: 6px; height: 16px;"></div>
+    </div>
+
+    <div class="notes-content">
+        <div class="notes-toolbar">
+            <span class="notes-label">MY NOTES</span>
+            <span id="notesSaveStatus">Saved locally</span>
+        </div>
+
+        <textarea
+            id="notesEditor"
+            placeholder="Start writing something..."
+            aria-label="Your notes"
+            spellcheck="true"
+        ></textarea>
+
+        <div class="notes-footer">
+            <span id="notesCharacterCount">0 characters</span>
+            <button id="clearNotesButton" type="button">
+                Clear notes
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
 
         <div class="window" id="welcome" style="display: none;">
 
